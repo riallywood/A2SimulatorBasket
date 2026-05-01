@@ -7,81 +7,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-
-/* ── BASE ── */
-html{
-  width:100%;
-  min-height:100%;
-  background:#0a0a0f;
-}
-body{
-  width:100%;
-  min-height:100vh;
-  background:#0a0a0f;
-  color:#fff;
-  font-family:'DM Sans',sans-serif;
-  overflow-x:hidden;
-}
-
-/* ── MOBILE: full screen ── */
-#root{
-  width:100%;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  background:#0a0a0f;
-}
-
-/* ── TABLET / PC: centered phone-like card ── */
-@media screen and (min-width:520px){
-  body{
-    display:flex;
-    align-items:flex-start;
-    justify-content:center;
-    padding:20px 0;
-    background:#111118;
-    min-height:100vh;
-  }
-  #root{
-    width:420px;
-    min-height:calc(100vh - 40px);
-    max-height:none;
-    border-radius:16px;
-    overflow:hidden;
-    box-shadow:0 8px 60px rgba(0,0,0,.8);
-  }
-}
-
-/* ── iOS safe area ── */
-@supports(padding-bottom:env(safe-area-inset-bottom)){
-  body{padding-bottom:env(safe-area-inset-bottom)}
-}
-
-button{
-  cursor:pointer;
-  font-family:'DM Sans',sans-serif;
-  border:none;
-  background:#1e1e2e;
-  color:#aaa;
-  border-radius:7px;
-  padding:5px 12px;
-  font-size:12px;
-  touch-action:manipulation;
-}
+html,body,#root{width:100%;height:100%;background:#0a0a0f;color:#fff;font-family:'DM Sans',sans-serif;overflow:hidden}
+button{cursor:pointer;font-family:'DM Sans',sans-serif;border:none;background:#1e1e2e;color:#aaa;border-radius:7px;padding:5px 12px;font-size:12px;touch-action:manipulation}
 button:disabled{cursor:not-allowed;opacity:.5}
-select,input{
-  font-family:'DM Sans',sans-serif;
-  color:#fff;
-  background:#1a1a28;
-  border:1px solid #2e2e44;
-  border-radius:6px;
-  padding:6px 8px;
-  font-size:12px;
-  width:100%;
-}
-::-webkit-scrollbar{width:3px}
-::-webkit-scrollbar-track{background:#0a0a0f}
-::-webkit-scrollbar-thumb{background:#2a2a3a;border-radius:2px}
+select,input{font-family:'DM Sans',sans-serif;color:#fff;background:#1a1a28;border:1px solid #2e2e44;border-radius:6px;padding:6px 8px;font-size:12px;width:100%}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:#0a0a0f}::-webkit-scrollbar-thumb{background:#2a2a3a;border-radius:2px}
 </style>
 </head>
 <body>
@@ -391,8 +321,8 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
 
 </script>
 <script>
-const {useState,useEffect,useRef,useCallback,createElement:h}=React;
-
+const{useState,useCallback,useEffect,useRef}=React;
+const h=React.createElement;
 // UTILS
 const c2=v=>Math.max(35,Math.min(65,v));
 const c3=v=>Math.max(15,Math.min(45,v));
@@ -500,13 +430,24 @@ tm("ros","Liofilchem Roseto","#4a6128","Roseto",[mk(1,'Jalen Cannon','Ala/Centro
 tm("ruv","Crifo Ruvo","#5a3a1a","Ruvo di Puglia",[mk(1,'Pierre Brooks II','Guardia',45,35,3.2,3.4,30.0,2.1,0.9,0.7,2.5,0.2,82,0.3917,1.343),mk(2,'Russ Smith','Guardia',42,36,3.3,1.3,26.9,0.2,3.2,0.5,2.8,0.1,83,0.35,1.0),mk(3,'Micheal Anumba','Guardia',59,40,2.5,0.8,22.0,0.2,1.1,0.5,2.0,0.1,78,0.35,1.0),mk(4,'Scott Ulaneo','Guardia',41,31,2.3,2.0,22.0,1.2,0.6,0.4,1.9,0.1,76,0.2795,0.959),mk(5,'Jacopo Borra','Guardia',43,30,2.4,2.1,22.0,1.3,0.6,0.5,1.9,0.1,76,0.2955,1.013),mk(6,'Aleksa Nikolic','Guardia',48,24,3.5,0.6,17.0,0.1,0.5,0.9,2.6,0.1,68,0.35,1.0),mk(7,'Bernardo Musso','Guardia',51,33,1.9,0.9,17.3,0.0,0.9,0.6,1.3,0.0,95,0.35,1.0),mk(8,'Hiccup Drago','Guardia',47,30,2.8,1.4,21.7,0.6,0.7,0.6,2.1,0.2,75,0.32,0.98),mk(9,'Olaf Neve','Guardia',47,30,2.8,1.4,21.7,0.6,0.7,0.6,2.1,0.2,75,0.32,0.98),mk(10,'Frollo Torre','Centro',47,30,2.8,1.4,21.7,0.6,0.7,0.6,2.1,0.2,75,0.32,0.98)]),
 tm("sca","Givova Scafati","#c47000","Scafati",[mk(1,'Caleb Walker','Guardia',46,43,3.3,3.2,32.0,1.8,0.9,0.7,2.6,0.1,84,0.3844,1.265),mk(2,'Bruno Mascolo','Play',44,34,2.8,5.1,30.0,2.0,0.9,0.5,2.3,0.1,81,0.3417,1.124),mk(3,'Terry Allen','Ala/Centro',54,32,4.4,2.6,26.0,1.8,0.8,1.2,3.2,0.2,78,0.3115,1.025),mk(4,'Lorenzo Caroti','Guardia/Ala',42,31,2.5,2.4,24.0,1.4,0.7,0.5,2.0,0.1,78,0.2917,0.96),mk(5,'Eulis Baez','Ala',48,28,3.1,1.8,22.0,1.3,0.6,0.8,2.3,0.2,76,0.31,1.0),mk(6,'Marco Mollura','Guardia',51,39,2.5,0.6,22.8,0.0,0.4,0.9,1.6,0.2,87,0.35,1.0),mk(7,'Antonio Iannuzzi','Centro',45,15,2.5,1.2,16.0,0.9,0.5,0.7,1.8,0.2,68,0.1844,0.632),mk(8,'Nazzareno Italiano','Guardia',43,45,3.2,0.5,18.0,0.1,0.6,1.0,2.2,0.0,74,0.35,1.0),mk(9,'Jiminy Grillo','Play',47,32,3.2,1.8,22.6,0.9,0.6,0.8,2.4,0.2,74,0.31,0.98),mk(10,'Kristoff Laplandia','Guardia',47,32,3.2,1.8,22.6,0.9,0.6,0.8,2.4,0.2,74,0.31,0.98)]),
 tm("tor","Reale Mutua Torino","#6a0dad","Torino",[mk(1,'Robert Allen','Ala/Centro',61,21,9.9,2.4,31.0,2.4,0.9,3.5,6.4,0.4,83,0.3452,1.117),mk(2,'Macio Teague','Guardia',46,36,3.0,3.7,31.8,1.9,0.9,0.6,2.4,0.1,82,0.38,1.2),mk(3,'Federico Massone','Guardia',41,33,2.5,2.8,24.0,1.3,1.4,0.5,2.0,0.1,80,0.3104,1.004),mk(4,'Matteo Schina','Ala/Centro',48,22,3.1,1.5,22.0,1.3,0.6,0.8,2.3,0.2,75,0.2227,0.72),mk(5,'Davide Bruttini','Centro',42,15,2.5,1.2,14.0,0.9,0.4,0.7,1.8,0.3,70,0.2143,0.74),mk(6,'Marco Cusin','Centro',45,20,4.0,0.2,14.8,0.1,1.0,1.0,3.0,0.4,47,0.35,1.0),mk(7,'Nicola Infante','Guardia',40,30,2.1,1.9,18.0,1.1,0.6,0.4,1.7,0.1,73,0.31,1.0),mk(8,'Phoebus Parigi','Ala',46,29,3.7,1.7,21.6,1.0,0.6,0.9,2.8,0.3,73,0.31,0.98),mk(9,'Bambi Foresta','Guardia',46,29,3.7,1.7,21.6,1.0,0.6,0.9,2.8,0.3,73,0.31,0.98),mk(10,'Pinocchio Bugiardo','Guardia',46,29,3.7,1.7,21.6,1.0,0.6,0.9,2.8,0.3,73,0.31,0.98)]),
-tm("ver","Tezenis Verona","#003399","Verona",[mk(1,'Tyrus McGee','Guardia',45,36,3.0,3.1,28.0,1.7,0.8,0.6,2.4,0.1,88,0.3911,1.287),mk(2,'Justin Johnson','Ala/Centro',50,28,6.1,1.7,24.0,1.3,0.6,2.7,3.4,0.3,72,0.2438,0.802),mk(3,'Federico Zampini','Guardia',44,34,2.8,2.8,27.0,1.6,0.8,0.5,2.3,0.1,78,0.3593,1.182),mk(4,'Lorenzo Ambrosin','Guardia/Ala',41,31,3.2,2.1,26.0,1.5,0.7,0.7,2.5,0.2,77,0.2981,0.981),mk(5,'Filippo Baldi Rossi','Guardia/Ala',41,31,2.5,2.0,22.0,1.2,0.6,0.5,2.0,0.1,76,0.2932,0.964),mk(6,'Federico Poser','Guardia/Ala',39,29,2.0,1.6,16.0,1.1,0.5,0.4,1.6,0.1,75,0.3125,1.028),mk(7,'Edoardo Casarin','Centro',46,33,3.1,1.3,18.0,1.0,0.5,0.9,2.2,0.3,73,0.28,0.92),mk(8,'Luca Fabi','Guardia',39,30,2.2,1.9,20.0,1.2,0.6,0.4,1.8,0.1,76,0.3,1.0),mk(9,'Jiminy Grillo','Play',43,31,3.0,1.8,21.9,1.0,0.6,0.7,2.3,0.2,75,0.31,0.98),mk(10,'Gastone Papero','Centro',43,31,3.0,1.8,21.9,1.0,0.6,0.7,2.3,0.2,75,0.31,0.98)]),
+tm("ver","Tezenis Verona","#003399","Verona",[mk(1,'Tyrus McGee','Guardia',45,36,3.0,3.1,28.0,1.7,0.8,0.6,2.4,0.1,88,0.3911,1.287),mk(2,'Justin Johnson','Ala/Centro',50,28,6.1,1.7,24.0,1.3,0.6,2.7,3.4,0.3,72,0.2438,0.802),mk(3,'Federico Zampini','Guardia',44,34,2.8,2.8,27.0,1.6,0.8,0.5,2.3,0.1,78,0.3593,1.182),mk(4,'Lorenzo Ambrosin','Guardia/Ala',41,31,3.2,2.1,26.0,1.5,0.7,0.7,2.5,0.2,77,0.2981,0.981),mk(5,'Filippo Baldi Rossi','Guardia/Ala',41,31,2.5,2.0,22.0,1.2,0.6,0.5,2.0,0.1,76,0.2932,0.964),mk(6,'Federico Poser','Guardia/Ala',39,29,2.0,1.6,16.0,1.1,0.5,0.4,1.6,0.1,75,0.3125,1.028),mk(7,'Edoardo Casarin','Centro',46,33,3.1,1.3,18.0,1.0,0.5,0.9,2.2,0.3,73,0.28,0.92),mk(8,'Luca Fabi','Guardia',39,30,2.2,1.9,20.0,1.2,0.6,0.4,1.8,0.1,76,0.3,1.0),mk(9,'Jiminy Grillo','Play',43,31,3.0,1.8,21.9,1.0,0.6,0.7,2.3,0.2,75,0.31,0.98),mk(10,'Gastone Papero','Centro',43,31,3.0,1.8,21.9,1.0,0.6,0.7,2.3,0.2,75,0.31,0.98)]),,
+tm("fag","Free Agents","#888888","Svincolati",[])
 ];
 
 // SIMULATION
-function ePct(p,isH,od,spd,con,w,cfg){
+// Home court tiers: alta(bol,bri,sca)=+3/-3, media(ver,liv,rie,pes,civ,ave,rim)=+2/-2, bassa=+1/-1
+const HOME_TIER={
+  bol:"alta",bri:"alta",sca:"alta",
+  ver:"media",liv:"media",rie:"media",pes:"media",civ:"media",ave:"media",rim:"media",
+};
+function getHomeMod(teamId,isH){
+  const tier=HOME_TIER[teamId]||"bassa";
+  const mod=tier==="alta"?3:tier==="media"?2:1;
+  return isH?mod:-mod;
+}
+function ePct(p,isH,od,spd,con,w,cfg,homeTeamId){
   let b=w===2?p.p2:p.p3;
-  if(cfg&&cfg.homeCourt)b+=isH?3:-2;
+  if(cfg&&cfg.homeCourt&&homeTeamId)b+=getHomeMod(homeTeamId,isH);
   if(od==="zona")b+=w===3?2:-2;
   if(spd==="veloce")b-=1;
   if(cfg&&cfg.fatigue&&con>=15)b-=5;
@@ -516,7 +457,7 @@ function pickW(pool,getW){if(!pool||!pool.length)return null;const ws=pool.map(g
 function pickS(fids,pls,sty,foMap){const av=fids.filter(id=>!foMap[id]).map(id=>pls.find(p=>p.id===id)).filter(Boolean);if(!av.length)return pls.find(p=>fids.includes(p.id))||null;return pickW(av,p=>{const tW=Math.max(1,p.propR||1.0);const rW=sty==="palla_sotto"?(isIn(p.ruolo)?2.5:0.7):sty==="perimetrale"?(isIn(p.ruolo)?0.6:2.2):1;return tW*rW;});}
 function pickBest3Shooter(fids,pls,foMap){const av=fids.filter(id=>!foMap[id]).map(id=>pls.find(p=>p.id===id)).filter(Boolean);if(!av.length)return null;const sorted=[...av].sort((a,b)=>b.p3-a.p3);const top3=sorted.slice(0,3);return pickW(top3,p=>p.p3);}
 function jumperScore(r){const g=rg(r);return g==="C"?5:g==="AP"?4:g==="A"?3:g==="G"?2:1;}
-function pickJumper(fids,pls){return fids.map(id=>pls.find(p=>p.id===id)).filter(Boolean).sort((a,b)=>jumperScore(b.ruolo)-jumperScore(a.ruolo))[0];}
+function pickJumper(fids,pls){return (fids||[]).map(id=>(pls||[]).find(p=>p&&p.id===id)).filter(Boolean).sort((a,b)=>jumperScore(b.ruolo)-jumperScore(a.ruolo))[0]||null;}
 function ovrColor(v){if(v>=75)return"#f5c518";if(v>=60)return"#7af";if(v>=45)return"#aaa";return"#666";}
 
 // COMPONENTS
@@ -532,14 +473,219 @@ function FoulDisplay({fouls,bonus}){
 
 function Btn({onClick,disabled,children,style}){return h('button',{onClick,disabled,style:{cursor:disabled?"not-allowed":"pointer",fontFamily:FD,border:"none",background:"#1e1e2e",color:"#aaa",borderRadius:7,padding:"5px 12px",fontSize:12,...(style||{})}},children);}
 
+
+// LANDING SCREEN
+function LandingScreen({onPlay,onManage}){
+  return h('div',{style:{width:"100%",minHeight:"100vh",background:"#07070f",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:24,padding:32,fontFamily:FD,color:"#fff"}},
+    h('div',{style:{textAlign:"center",marginBottom:16}},
+      h('div',{style:{fontFamily:FB,fontSize:32,letterSpacing:4,color:"#fff"}},"LNP SERIE A2"),
+      h('div',{style:{fontSize:12,color:"#555",marginTop:4}},"Stagione 2025/26"),
+      h('div',{style:{width:60,height:2,background:"#1a4fa0",margin:"12px auto 0"}})),
+    h('div',{style:{width:"100%",maxWidth:320,display:"flex",flexDirection:"column",gap:14}},
+      h(Btn,{onClick:onPlay,style:{
+        width:"100%",background:"#1a4fa0",color:"#fff",border:"none",
+        borderRadius:14,padding:"18px 16px",fontSize:16,fontFamily:FB,letterSpacing:3,
+        display:"flex",alignItems:"center",justifyContent:"center",gap:12}},
+        h('span',{style:{fontSize:22}},"🏀"),
+        "VAI ALLA PARTITA"),
+      h(Btn,{onClick:onManage,style:{
+        width:"100%",background:"#12121a",color:"#aaa",
+        border:"1px solid #2a2a3a",
+        borderRadius:14,padding:"18px 16px",fontSize:16,fontFamily:FB,letterSpacing:3,
+        display:"flex",alignItems:"center",justifyContent:"center",gap:12}},
+        h('span',{style:{fontSize:22}},"⚙️"),
+        "GESTIONE SQUADRE")));
+}
+
+
+
+// PLAYER MANAGEMENT SCREEN
+function ManagementScreen({teams,setTeams,onBack}){
+  const [view,setView]=useState("menu");
+  const [selTeamId,setSelTeamId]=useState(null);
+  const [selPlayerId,setSelPlayerId]=useState(null);
+  const [editData,setEditData]=useState({});
+  const [newPlayerData,setNewPlayerData]=useState({});
+  const [fromTeamId,setFromTeamId]=useState(null);
+  const [toTeamId,setToTeamId]=useState(null);
+  const [transferPid,setTransferPid]=useState(null);
+  const [msg,setMsg]=useState("");
+
+  const allTeams=(teams||[]).filter(t=>t&&t.id);
+  const selTeam=allTeams.find(t=>t.id===selTeamId)||null;
+  const selPlayer=(selTeam?.players||[]).find(p=>p&&p.id===selPlayerId)||null;
+
+  const showMsg=(m)=>{setMsg(m);setTimeout(()=>setMsg(""),2500);};
+
+  const saveEdit=()=>{
+    if(!selTeam||!selPlayer){showMsg("Seleziona squadra e giocatore");return;}
+    const updated={...selPlayer,...editData};
+    const p2n=(updated.p2-35)/30;const p3n=(updated.p3-15)/30;const tln=((updated.tl||70)-45)/50;
+    const rimN=Math.min(1,(updated.rimT40||3)/12);const othN=Math.min(1,((updated.ast40||2)+0.8)/10);
+    updated.ovr=Math.round((0.30*p2n+0.20*p3n+0.10*tln+0.30*rimN+0.10*othN)*100);
+    updated.propR=updated.prop||1.0;
+    const newTeams=allTeams.map(t=>{
+      if(!t||t.id!==selTeamId)return t;
+      return {...t,players:(t.players||[]).map(p=>p&&p.id===selPlayerId?updated:p)};
+    });
+    setTeams(newTeams);
+    try{localStorage.setItem("bapp_custom_teams",JSON.stringify(newTeams));}catch{}
+    showMsg("Salvato!");
+    setView("menu");
+  };
+
+  const saveNew=()=>{
+    const d=newPlayerData;
+    if(!d.name||!selTeamId){showMsg("Inserisci almeno nome e squadra");return;}
+    const team=allTeams.find(t=>t.id===selTeamId);
+    if(!team){showMsg("Squadra non trovata");return;}
+    const maxId=Math.max(0,...(team.players||[]).map(p=>p?p.id:0));
+    const p2=parseFloat(d.p2)||50;const p3=parseFloat(d.p3)||30;const tl=parseFloat(d.tl)||70;
+    const rimT=parseFloat(d.rimT40)||3;const ast=parseFloat(d.ast40)||2;
+    const p2n=(p2-35)/30;const p3n=(p3-15)/30;const tln=(tl-45)/50;
+    const rimN=Math.min(1,rimT/12);const othN=Math.min(1,(ast+0.8)/10);
+    const ovr=Math.round((0.30*p2n+0.20*p3n+0.10*tln+0.30*rimN+0.10*othN)*100);
+    const newP={id:maxId+1,name:d.name,ruolo:d.ruolo||"Guardia",
+      p2:Math.max(35,Math.min(65,p2)),p3:Math.max(15,Math.min(45,p3)),
+      tl:Math.max(45,Math.min(95,tl)),rimT40:rimT,rimO40:1,rimD40:2,
+      ast40:ast,pp40:parseFloat(d.pp40)||1.5,rec40:0.8,stopp40:0.2,
+      minG:parseFloat(d.minG)||20,prop:parseFloat(d.prop)||0.35,propR:parseFloat(d.prop)||1.0,ovr};
+    const newTeams=allTeams.map(t=>{
+      if(!t||t.id!==selTeamId)return t;
+      return {...t,players:[...(t.players||[]),newP]};
+    });
+    setTeams(newTeams);
+    try{localStorage.setItem("bapp_custom_teams",JSON.stringify(newTeams));}catch{}
+    showMsg("Giocatore aggiunto!");
+    setNewPlayerData({});setSelTeamId(null);setView("menu");
+  };
+
+  const doTransfer=()=>{
+    if(!fromTeamId||!toTeamId||!transferPid||fromTeamId===toTeamId){
+      showMsg("Scegli squadra, giocatore e destinazione");return;
+    }
+    const fromTeam=allTeams.find(t=>t&&t.id===fromTeamId);
+    const player=(fromTeam?.players||[]).find(p=>p&&p.id===transferPid);
+    if(!player){showMsg("Giocatore non trovato");return;}
+    const newTeams=allTeams.map(t=>{
+      if(!t)return t;
+      if(t.id===fromTeamId)return {...t,players:(t.players||[]).filter(p=>p&&p.id!==transferPid)};
+      if(t.id===toTeamId){const maxId=Math.max(0,...(t.players||[]).map(p=>p?p.id:0));return {...t,players:[...(t.players||[]),{...player,id:maxId+1}]};}
+      return t;
+    });
+    setTeams(newTeams);
+    try{localStorage.setItem("bapp_custom_teams",JSON.stringify(newTeams));}catch{}
+    showMsg(player.name+" trasferito!");
+    setFromTeamId(null);setToTeamId(null);setTransferPid(null);setView("menu");
+  };
+
+  const iStyle={width:"100%",background:"#1a1a28",color:"#fff",border:"1px solid #2a2a3a",
+    borderRadius:7,padding:"7px 10px",fontSize:12,fontFamily:FD,marginTop:2};
+  const hd=(title)=>h('div',{style:{display:"flex",alignItems:"center",gap:10,padding:"10px 14px",
+    background:"#12121a",borderBottom:"1px solid #1e1e2e",flexShrink:0}},
+    h(Btn,{onClick:()=>setView("menu"),style:{fontSize:11,padding:"4px 10px"}},"← Indietro"),
+    h('div',{style:{fontFamily:FB,fontSize:15,letterSpacing:2}},title));
+
+  const statFields=[
+    {k:"name",lbl:"NOME",num:false},{k:"ruolo",lbl:"RUOLO",num:false},
+    {k:"p2",lbl:"2PT%",num:true},{k:"p3",lbl:"3PT%",num:true},{k:"tl",lbl:"TL%",num:true},
+    {k:"rimT40",lbl:"RIM/40",num:true},{k:"ast40",lbl:"AST/40",num:true},
+    {k:"pp40",lbl:"PP/40",num:true},{k:"minG",lbl:"MINUTI/G",num:true},
+    {k:"prop",lbl:"PROPENSIONE TIRO",num:true},
+  ];
+
+  const Field=({k,lbl,num,dataObj,setData})=>h('div',{style:{marginBottom:10}},
+    h('div',{style:{fontSize:9,color:"#888",fontFamily:FB,letterSpacing:1,marginBottom:2}},lbl),
+    h('input',{type:num?"number":"text",
+      defaultValue:dataObj[k]!==undefined?dataObj[k]:"",
+      onBlur:e=>setData(d=>({...d,[k]:num?(parseFloat(e.target.value)||0):e.target.value})),
+      key:k,
+      style:iStyle}));
+
+  const TeamSelect=({value,onChange,exclude})=>h('select',{value:value||"",onChange:e=>onChange(e.target.value),style:iStyle},
+    h('option',{value:""},"— Scegli squadra —"),
+    allTeams.filter(t=>!exclude||t.id!==exclude).map(t=>h('option',{key:t.id,value:t.id},t.name)));
+
+  if(view==="editPick")return h('div',{style:{width:"100%",minHeight:"100vh",background:"#0a0a0f",display:"flex",flexDirection:"column",fontFamily:FD,color:"#fff"}},
+    hd("MODIFICA GIOCATORE"),
+    h('div',{style:{flex:1,overflow:"auto",padding:"12px 16px"}},
+      h('div',{style:{marginBottom:12}},
+        h('div',{style:{fontSize:9,color:"#888",fontFamily:FB,letterSpacing:1,marginBottom:2}},"SQUADRA"),
+        h(TeamSelect,{value:selTeamId,onChange:v=>{setSelTeamId(v);setSelPlayerId(null);}})),
+      selTeamId&&h('div',{style:{marginBottom:12}},
+        h('div',{style:{fontSize:9,color:"#888",fontFamily:FB,letterSpacing:1,marginBottom:2}},"GIOCATORE"),
+        h('select',{value:selPlayerId||"",onChange:e=>setSelPlayerId(parseInt(e.target.value)||null),style:iStyle},
+          h('option',{value:""},"— Scegli —"),
+          (selTeam?.players||[]).filter(p=>p&&p.id).map(p=>h('option',{key:p.id,value:p.id},p.name+" ("+p.ruolo+")")))),
+      selPlayerId&&h(Btn,{onClick:()=>{setEditData({...selPlayer});setView("edit");},
+        style:{width:"100%",background:"#1a4fa0",color:"#fff",borderRadius:10,padding:12,fontSize:14,fontFamily:FB,letterSpacing:2}},
+        "MODIFICA →")));
+
+  if(view==="edit")return h('div',{style:{width:"100%",minHeight:"100vh",background:"#0a0a0f",display:"flex",flexDirection:"column",fontFamily:FD,color:"#fff"}},
+    hd("MODIFICA GIOCATORE"),
+    h('div',{style:{flex:1,overflow:"auto",padding:"12px 16px"}},
+      selPlayer&&h('div',{style:{marginBottom:14,padding:"8px 12px",background:"#12121a",borderRadius:8,border:"1px solid "+(selTeam?.color||"#2a2a3a")}},
+        h('div',{style:{fontFamily:FB,color:selTeam?.color||"#7af",fontSize:12}},selPlayer.name),
+        h('div',{style:{fontSize:10,color:"#666"}},selTeam?.name||"")),
+      statFields.map(f=>h(Field,{key:f.k,...f,dataObj:editData,setData:setEditData})),
+      msg&&h('div',{style:{color:"#44ee44",fontFamily:FB,fontSize:12,marginBottom:8,textAlign:"center"}},msg),
+      h(Btn,{onClick:saveEdit,style:{width:"100%",background:"#1a4fa0",color:"#fff",borderRadius:10,padding:12,fontSize:14,fontFamily:FB,letterSpacing:2}},"SALVA MODIFICHE")));
+
+  if(view==="add")return h('div',{style:{width:"100%",minHeight:"100vh",background:"#0a0a0f",display:"flex",flexDirection:"column",fontFamily:FD,color:"#fff"}},
+    hd("AGGIUNGI GIOCATORE"),
+    h('div',{style:{flex:1,overflow:"auto",padding:"12px 16px"}},
+      h('div',{style:{marginBottom:12}},
+        h('div',{style:{fontSize:9,color:"#888",fontFamily:FB,letterSpacing:1,marginBottom:2}},"SQUADRA"),
+        h(TeamSelect,{value:selTeamId,onChange:setSelTeamId})),
+      statFields.map(f=>h(Field,{key:f.k,...f,dataObj:newPlayerData,setData:setNewPlayerData})),
+      msg&&h('div',{style:{color:"#44ee44",fontFamily:FB,fontSize:12,marginBottom:8,textAlign:"center"}},msg),
+      h(Btn,{onClick:saveNew,style:{width:"100%",background:"#1a4fa0",color:"#fff",borderRadius:10,padding:12,fontSize:14,fontFamily:FB,letterSpacing:2}},"AGGIUNGI GIOCATORE")));
+
+  if(view==="transfer")return h('div',{style:{width:"100%",minHeight:"100vh",background:"#0a0a0f",display:"flex",flexDirection:"column",fontFamily:FD,color:"#fff"}},
+    hd("TRASFERISCI GIOCATORE"),
+    h('div',{style:{flex:1,overflow:"auto",padding:"12px 16px"}},
+      h('div',{style:{marginBottom:12}},
+        h('div',{style:{fontSize:9,color:"#888",fontFamily:FB,letterSpacing:1,marginBottom:2}},"SQUADRA CEDENTE"),
+        h(TeamSelect,{value:fromTeamId,onChange:v=>{setFromTeamId(v);setTransferPid(null);}})),
+      fromTeamId&&h('div',{style:{marginBottom:12}},
+        h('div',{style:{fontSize:9,color:"#888",fontFamily:FB,letterSpacing:1,marginBottom:2}},"GIOCATORE"),
+        h('select',{value:transferPid||"",onChange:e=>setTransferPid(parseInt(e.target.value)||null),style:iStyle},
+          h('option',{value:""},"— Scegli —"),
+          (allTeams.find(t=>t&&t.id===fromTeamId)?.players||[]).filter(p=>p&&p.id).map(p=>h('option',{key:p.id,value:p.id},p.name+" ("+p.ruolo+")")))),
+      h('div',{style:{marginBottom:12}},
+        h('div',{style:{fontSize:9,color:"#888",fontFamily:FB,letterSpacing:1,marginBottom:2}},"SQUADRA RICEVENTE"),
+        h(TeamSelect,{value:toTeamId,onChange:setToTeamId,exclude:fromTeamId})),
+      msg&&h('div',{style:{color:"#44ee44",fontFamily:FB,fontSize:12,marginBottom:8,textAlign:"center"}},msg),
+      h(Btn,{onClick:doTransfer,style:{width:"100%",background:"#1a4fa0",color:"#fff",borderRadius:10,padding:12,fontSize:14,fontFamily:FB,letterSpacing:2}},"TRASFERISCI")));
+
+  return h('div',{style:{width:"100%",minHeight:"100vh",background:"#07070f",display:"flex",flexDirection:"column",fontFamily:FD,color:"#fff"}},
+    h('div',{style:{display:"flex",alignItems:"center",gap:10,padding:"10px 14px",background:"#12121a",borderBottom:"1px solid #1e1e2e",flexShrink:0}},
+      h(Btn,{onClick:onBack,style:{fontSize:11,padding:"4px 10px"}},"← Indietro"),
+      h('div',{style:{fontFamily:FB,fontSize:16,letterSpacing:3}},"GESTIONE SQUADRE")),
+    h('div',{style:{flex:1,overflow:"auto",padding:"16px"}},
+      [
+        {icon:"✏️",title:"Modifica giocatore",sub:"Cambia le statistiche di un giocatore",action:()=>setView("editPick")},
+        {icon:"➕",title:"Aggiungi giocatore",sub:"Inserisci un nuovo giocatore in una squadra",action:()=>setView("add")},
+        {icon:"🔄",title:"Trasferisci giocatore",sub:"Sposta un giocatore da una squadra all'altra",action:()=>setView("transfer")},
+      ].map((item,i)=>h('div',{key:i,onClick:item.action,
+        style:{background:"#12121a",border:"1px solid #2a2a3a",borderRadius:12,padding:"16px 18px",
+          marginBottom:12,cursor:"pointer",display:"flex",alignItems:"center",gap:14}},
+        h('span',{style:{fontSize:28}},item.icon),
+        h('div',null,
+          h('div',{style:{fontSize:13,fontWeight:700,color:"#fff"}},item.title),
+          h('div',{style:{fontSize:10,color:"#777",marginTop:2}},item.sub))))),
+    msg&&h('div',{style:{padding:"8px 16px",color:"#44ee44",fontFamily:FB,fontSize:11,textAlign:"center"}},msg));
+}
+
+
 // SETUP+SELECT SCREEN
-function SetupSelectScreen({onStart,hasSaved,onResume}){
+function SetupSelectScreen({onStart,hasSaved,onResume,teams:T0prop=T0}){
   const [cfg,setCfg]=useState({homeCourt:true,fatigue:true,qDur:10});
   const [hId,setH]=useState(null);const [aId,setA]=useState(null);
   const [pk,setPk]=useState("home");const [showResume,setShowResume]=useState(hasSaved);
   const upd=(k,v)=>setCfg(c=>({...c,[k]:v}));
   const pick=id=>{if(pk==="home"){setH(id);if(aId===id)setA(null);setPk("away");}else if(id!==hId)setA(id);};
-  const hT=T0.find(t=>t.id===hId);const aT=T0.find(t=>t.id===aId);const ready=!!(hId&&aId);
+  const hT=T0prop.find(t=>t&&t.id===hId);const aT=T0prop.find(t=>t&&t.id===aId);const ready=!!(hId&&aId&&hT&&aT);
   if(showResume)return h('div',{style:{width:"100vw",height:"100vh",background:"#07070f",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:16,padding:24,fontFamily:FD,color:"#fff"}},
     h('div',{style:{fontFamily:FB,fontSize:28,letterSpacing:4}},"LNP SERIE A2"),
     h('div',{style:{fontSize:11,color:"#555"}},"2025 - 26"),
@@ -567,7 +713,7 @@ function SetupSelectScreen({onStart,hasSaved,onResume}){
         aT?[h('div',{key:"l",style:{fontSize:8,color:"#666"}},"OSPITE"),h('div',{key:"n",style:{fontFamily:FB,fontSize:12,color:aT.color}},aT.name)]:h('div',{style:{fontSize:10,color:pk==="away"?"#f5c518":"#333"}},pk==="away"?"Seleziona...":"Tocca"))),
     h('div',{style:{flex:1,overflowY:"auto",padding:"4px 10px 6px"}},
       h('div',{style:{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(140px,1fr))",gap:5}},
-        T0.map(t=>{const isH2=t.id===hId,isA2=t.id===aId,dis=pk==="away"&&t.id===hId;
+        T0prop.filter(t=>t&&t.id).map(t=>{const isH2=t.id===hId,isA2=t.id===aId,dis=pk==="away"&&t.id===hId;
           return h('div',{key:t.id,onClick:()=>!dis&&pick(t.id),style:{padding:"7px 10px",borderRadius:8,cursor:dis?"not-allowed":"pointer",background:isH2||isA2?t.color+"1e":"#111118",border:"1px solid "+(isH2||isA2?t.color+"88":"#1a1a28"),opacity:dis?0.3:1,display:"flex",alignItems:"center",gap:7}},
             h('div',{style:{width:7,height:7,borderRadius:"50%",background:t.color,flexShrink:0}}),
             h('div',{style:{flex:1,minWidth:0}},h('div',{style:{fontSize:10,fontWeight:isH2||isA2?700:400,color:isH2||isA2?"#fff":"#bbb",whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}},t.name),h('div',{style:{fontSize:7,color:"#555"}},t.city)),
@@ -629,6 +775,16 @@ function MatchStats({hT,aT,onField,ms,score,qPts,onBack,isOT,otCount}){
         h('div',{style:{textAlign:"center",fontSize:9,color:team.color,fontWeight:700}},tot.p2m+"/"+tot.p2a),
         h('div',{style:{textAlign:"center",fontSize:9,color:team.color,fontWeight:700}},tot.p3m+"/"+tot.p3a),
         h('div',{style:{textAlign:"center",fontSize:9,color:team.color,fontWeight:700}},tot.tlm+"/"+tot.tla),
+        h('div',null)),
+      h('div',{style:{display:"grid",gridTemplateColumns:"1fr 26px 26px 26px 26px 34px 34px 34px 28px",padding:"3px 6px",gap:2,background:"#141428"}},
+        h('div',{style:{fontSize:8,color:"#555"}},"%"),
+        h('div',null),h('div',null),h('div',null),h('div',null),
+        h('div',{style:{textAlign:"center",fontSize:9,color:"#88aaff",fontWeight:700}},
+          tot.p2a>0?Math.round(tot.p2m/tot.p2a*100)+"%":"-"),
+        h('div',{style:{textAlign:"center",fontSize:9,color:"#88aaff",fontWeight:700}},
+          tot.p3a>0?Math.round(tot.p3m/tot.p3a*100)+"%":"-"),
+        h('div',{style:{textAlign:"center",fontSize:9,color:"#88aaff",fontWeight:700}},
+          tot.tla>0?Math.round(tot.tlm/tot.tla*100)+"%":"-"),
         h('div',null))));
 }
 
@@ -636,11 +792,11 @@ function CoachScreen({hT,aT,choices,onChange,onBack,onRoster}){
   const upd=(tid,k,v)=>onChange({...choices,[tid]:{...choices[tid],[k]:v}});
   const Panel=({team})=>{const c=choices[team.id]||{};
     const Opt=({grp,val,label,def})=>{const active=(c[grp]||def)===val;return h('div',{onClick:()=>upd(team.id,grp,val),style:{flex:1,padding:"7px 3px",textAlign:"center",borderRadius:7,cursor:"pointer",background:active?team.color:"#13131b",border:"1px solid "+(active?team.color:"#252535"),color:active?"#fff":"#666",fontWeight:active?700:400,fontSize:10,userSelect:"none"}},label);};
-    const inf={difesa:(c.difesa||"uomo")==="zona"?"+2% da 3, -2% da 2":"Marcatura individuale",speed:(c.speed||"normale")==="veloce"?"-1% tiro":(c.speed||"normale")==="lento"?"+30% pp":"15 sec/azione",atk:(c.atk||"bilanciato")==="palla_sotto"?"C e AP ricevono piu palloni":(c.atk||"bilanciato")==="perimetrale"?"G e A ricevono piu palloni":"Distribuzione equilibrata"};
+    const inf={difesa:(c.difesa||"uomo")==="zona"?"+2% da 3, -2% da 2":"Marcatura individuale",speed:(c.speed||"normale")==="veloce"?"-1% tiro":(c.speed||"normale")==="lento"?"+30% pp":"20 sec/azione",atk:(c.atk||"bilanciato")==="palla_sotto"?"C e AP ricevono piu palloni":(c.atk||"bilanciato")==="perimetrale"?"G e A ricevono piu palloni":"Distribuzione equilibrata"};
     return h('div',{style:{flex:1,background:"#0e0e16",borderRadius:10,overflow:"hidden",border:"1px solid #1a1a28"}},
       h('div',{style:{background:team.color,padding:"8px 12px",fontFamily:FB,fontSize:14,letterSpacing:2}},team.name),
       h('div',{style:{padding:12,display:"flex",flexDirection:"column",gap:12}},
-        [{key:"difesa",label:"DIFESA",opts:[["uomo","A uomo"],["zona","Zona"]],def:"uomo"},{key:"speed",label:"VELOCITA",opts:[["normale","Norm.15s"],["veloce","Vel.10s"],["lento","Lento 20s"]],def:"normale"},{key:"atk",label:"ATTACCO",opts:[["bilanciato","Bilanciato"],["palla_sotto","P.sotto"],["perimetrale","Perimet."]],def:"bilanciato"}].map(({key,label,opts,def})=>h('div',{key},h('div',{style:{fontSize:8,color:"#555",fontWeight:700,letterSpacing:2,marginBottom:5}},label),h('div',{style:{display:"flex",gap:5}},opts.map(([val,lbl])=>h(Opt,{key:val,grp:key,val,label:lbl,def}))),h('div',{style:{marginTop:3,fontSize:9,color:"#444"}},inf[key])))));};
+        [{key:"difesa",label:"DIFESA",opts:[["uomo","A uomo"],["zona","Zona"]],def:"uomo"},{key:"speed",label:"VELOCITA",opts:[["normale","Norm.20s"],["veloce","Vel.15s"],["lento","Lento 25s"]],def:"normale"},{key:"atk",label:"ATTACCO",opts:[["bilanciato","Bilanciato"],["palla_sotto","P.sotto"],["perimetrale","Perimet."]],def:"bilanciato"}].map(({key,label,opts,def})=>h('div',{key},h('div',{style:{fontSize:8,color:"#555",fontWeight:700,letterSpacing:2,marginBottom:5}},label),h('div',{style:{display:"flex",gap:5}},opts.map(([val,lbl])=>h(Opt,{key:val,grp:key,val,label:lbl,def}))),h('div',{style:{marginTop:3,fontSize:9,color:"#444"}},inf[key])))));};
   return h('div',{style:{position:"fixed",top:0,left:0,right:0,bottom:0,zIndex:200,background:"#0a0a0f",display:"flex",flexDirection:"column",fontFamily:FD,color:"#fff",overflow:"hidden"}},
     h('div',{style:{display:"flex",alignItems:"center",gap:8,padding:"9px 12px",background:"#12121a",borderBottom:"1px solid #1e1e2e",flexShrink:0}},
       h(Btn,{onClick:onBack,style:{borderRadius:7,padding:"5px 12px",fontSize:11}},"Indietro"),
@@ -668,6 +824,22 @@ function calcMVP(hT2,aT2,ms2){
 }
 
 function EndGame({hT,aT,score,qPts,onBack,otCount,ms,onField}){
+  const printPDF=()=>{
+    const rows=[[hT,aT].map(team=>{
+      const trows=(ms[team.id]||{});
+      return team.players.filter(p=>trows[p.id]?.played).sort((a,b)=>(trows[b.id]?.pts||0)-(trows[a.id]?.pts||0))
+        .map(p=>{const s=trows[p.id]||{pts:0,rim:0,ast:0,fc:0,p2m:0,p2a:0,p3m:0,p3a:0,tlm:0,tla:0};
+          return [p.name,p.ruolo,s.pts,s.rim,s.ast,s.fc,
+            s.p2m+'/'+s.p2a,s.p3m+'/'+s.p3a,s.tlm+'/'+s.tla].join('\t');});
+    })].flat();
+    const header='GIOCATORE\tRUOLO\tPTS\tRIM\tAST\tFC\t2PT\t3PT\tTL';
+    const hSection='=== '+hT.name+' ===\n'+header+'\n'+rows[0];
+    const aSection='=== '+aT.name+' ===\n'+header+'\n'+rows[1];
+    const text='LNP SERIE A2 SIMULATOR\n'+hT.name+' '+score.home+' - '+score.away+' '+aT.name+'\n\n'+hSection+'\n\n'+aSection;
+    const blob=new Blob([text],{type:'text/plain'});
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+    a.download='basket_a2_stats.txt';a.click();
+  };
   const [showStats,setShowStats]=useState(false);
   if(showStats)return h(MatchStats,{hT,aT,onField,ms,score,qPts,otCount,onBack:()=>setShowStats(false)});
   const winner=score.home>score.away?hT:score.away>score.home?aT:null;
@@ -694,15 +866,28 @@ function EndGame({hT,aT,score,qPts,onBack,otCount,ms,onField}){
       h('div',{style:{display:"flex",alignItems:"center",gap:10}},
         h('div',{style:{width:32,height:32,borderRadius:"50%",background:mvp.team.color,display:"flex",alignItems:"center",justifyContent:"center",fontFamily:FB,fontSize:13,color:"#fff"}},rg(mvp.player.ruolo)),
         h('div',null,h('div',{style:{fontFamily:FB,fontSize:13,color:"#fff"}},mvp.player.name),h('div',{style:{fontSize:10,color:mvp.team.color}},mvp.team.name),h('div',{style:{fontSize:9,color:"#aaa"}},mvp.s.pts+"pt  "+mvp.s.rim+"rim  "+mvp.s.ast+"ast")))),
-    h('div',{style:{display:"flex",gap:10,width:"100%",maxWidth:320}},
-      h(Btn,{onClick:()=>setShowStats(true),style:{flex:1,background:"#1a1a2e",color:"#7af",border:"1px solid #2a2a4a",borderRadius:10,padding:10,fontSize:12,fontFamily:FB,letterSpacing:2}},"STATISTICHE"),
-      h(Btn,{onClick:onBack,style:{flex:1,background:"#1a4fa0",color:"#fff",border:"none",borderRadius:10,padding:10,fontSize:12,fontFamily:FB,letterSpacing:2}},"NUOVA")));
+    h('div',{style:{display:"flex",gap:8,width:"100%",maxWidth:340,flexWrap:"wrap",justifyContent:"center"}},
+      h(Btn,{onClick:()=>setShowStats(true),style:{flex:1,minWidth:90,background:"#1a1a2e",color:"#7af",border:"1px solid #2a2a4a",borderRadius:10,padding:"10px 8px",fontSize:11,fontFamily:FB,letterSpacing:1}},"STATISTICHE"),
+      h(Btn,{onClick:printPDF,style:{flex:1,minWidth:90,background:"#1a2a10",color:"#7d4",border:"1px solid #2a4a1a",borderRadius:10,padding:"10px 8px",fontSize:11,fontFamily:FB,letterSpacing:1}},"STAMPA PDF"),
+      h(Btn,{onClick:onBack,style:{flex:1,minWidth:90,background:"#1a4fa0",color:"#fff",border:"none",borderRadius:10,padding:"10px 8px",fontSize:11,fontFamily:FB,letterSpacing:1}},"NUOVA")));
 }
 
 // MAIN APP
 function App(){
   const sv=lSv();
-  const [teams]=useState(T0);
+  const [teams,setTeams]=useState(()=>{
+    try{const saved=localStorage.getItem('bapp_custom_teams');
+    if(saved){const parsed=JSON.parse(saved);
+    // Merge: replace matching teams, keep T0 for others
+    return T0.map(t=>{const found=parsed.find(s=>s&&s.id===t.id);return found||t;}).filter(t=>t&&t.id);
+    }}catch{} return T0;
+  });
+  const [appView,setAppView]=useState('landing');
+  const [pendingStart,setPendingStart]=useState(null); // {hh,aa,cfg} waiting for roster10
+  const [roster10Team,setRoster10Team]=useState(null); // team object needing trimming
+  const [roster10Queue,setRoster10Queue]=useState([]); // remaining teams to trim
+  const [roster10Sel,setRoster10Sel]=useState(new Set());
+  const [matchRosters,setMatchRosters]=useState({}); // teamId -> [player] for this match // landing|game|manage
   const [hId,setHId]=useState(sv?.hId||null);const [aId,setAId]=useState(sv?.aId||null);
   const [cfg,setCfg]=useState(sv?.cfg||{homeCourt:true,fatigue:true,qDur:10});
   const [scr,setScr]=useState("sel");
@@ -715,34 +900,67 @@ function App(){
   const [of,setOf]=useState({});const [ch,setCh]=useState(sv?.ch||{});const [ms,setMs]=useState({});
   const [fat,setFat]=useState({});const [poss,setPoss]=useState("home");
   const [busy,setBusy]=useState(false);const [play,setPlay]=useState(false);const [tipDone,setTipDone]=useState(false);
-  const [tf,setTf]=useState({});const [toL,setToL]=useState({});const [foA,setFoA]=useState(null);
+  const [tf,setTf]=useState({});
+  const [totalTf,setTotalTf]=useState({});
+  const totalTfRef=useRef({});const [toL,setToL]=useState({});const [foA,setFoA]=useState(null);
   const [qPts,setQPts]=useState(sv?.qPts||[]);const [qScH,setQScH]=useState(0);const [qScA,setQScA]=useState(0);
   const [last3Active,setLast3Active]=useState(false);
   const [last3Popup,setLast3Popup]=useState(false);
   const [manualChoice,setManualChoice]=useState({atk:null,def:null});
   const [waitingManual,setWaitingManual]=useState(false);
   const feedRef=useRef(null);const tmrRef=useRef(null);
-  const hT=teams.find(t=>t.id===hId);const aT=teams.find(t=>t.id===aId);
+  const hT=(matchRosters[hId])||(teams.find(t=>t&&t.id===hId));
+  const aT=(matchRosters[aId])||(teams.find(t=>t&&t.id===aId));
   const qDurSecs=(cfg?.qDur||10)*60;
 
   // addA: posColor='green'|'red'|null
   const addA=useCallback((text,color,posColor)=>{setActs(a=>[{lines:[text],color,posColor:posColor||null},...a].slice(0,80));},[]);
   const addL=useCallback((text,inline,posColor)=>{setActs(a=>{if(!a.length)return a;if(inline){const first=a[0].lines[0]||'';const u={...a[0],lines:[first+' '+text],posColor:posColor||a[0].posColor};return[u,...a.slice(1)];}const u={...a[0],lines:[...a[0].lines,text]};return[u,...a.slice(1)];});},[]);
 
-  const startNew=(hh,aa,newCfg)=>{
-    setCfg(newCfg);
-    const hR=teams.find(t=>t.id===hh),aR=teams.find(t=>t.id===aa);
-    const f={};[hR,aR].forEach(t=>{f[t.id]={};t.players.forEach(p=>{f[t.id][p.id]={contMin:0,benchMin:0};});});
-    const hS=new Set(hR.players.slice(0,Math.min(5,hR.players.length)).map(p=>p.id));
-    const aS=new Set(aR.players.slice(0,Math.min(5,aR.players.length)).map(p=>p.id));
+  // finalizeStart: called after any roster10 selections are done
+  const finalizeStart=(hh,aa,newCfg,rosters)=>{
+    const hR=rosters[hh]||(teams.find(t=>t.id===hh));
+    const aR=rosters[aa]||(teams.find(t=>t.id===aa));
+    if(!hR||!aR)return;
+    // Limit to 10 players for this match
+    const hMatch={...hR,players:hR.players.slice(0,10)};
+    const aMatch={...aR,players:aR.players.slice(0,10)};
+    const f={};[hMatch,aMatch].forEach(t=>{f[t.id]={};t.players.forEach(p=>{f[t.id][p.id]={contMin:0,benchMin:0};});});
+    const hS=new Set(hMatch.players.slice(0,Math.min(5,hMatch.players.length)).map(p=>p.id));
+    const aS=new Set(aMatch.players.slice(0,Math.min(5,aMatch.players.length)).map(p=>p.id));
     const o={};o[hh]=hS;o[aa]=aS;
-    setHId(hh);setAId(aa);setOf(o);setFat(f);setMs(iMs(hR,aR));
-    setTf({[hh]:0,[aa]:0});setToL({[hh]:2,[aa]:2});
+    setHId(hh);setAId(aa);setOf(o);setFat(f);
+    // Use match-specific player list in teams for this game
+    setMatchRosters({[hh]:hMatch,[aa]:aMatch});
+    setMs(iMs(hMatch,aMatch));
+    setTf({[hh]:0,[aa]:0});setTotalTf({[hh]:0,[aa]:0});totalTfRef.current={[hh]:0,[aa]:0};setToL({[hh]:2,[aa]:2});
     setScore({home:0,away:0});setQtr(1);setIsOT(false);setOtCount(0);
     setTl(newCfg.qDur*60);setQPts([]);setQScH(0);setQScA(0);
     setPlay(false);setBusy(false);setFoA(null);setTipDone(false);
     setLast3Active(false);setLast3Popup(false);setWaitingManual(false);setManualChoice({atk:null,def:null});
-    setActs([{lines:["Premi GIOCA per la palla a due!"],color:"#555",posColor:null}]);setScr("main");
+    setActs([{lines:["Premi GIOCA per la palla a due!"],color:"#555",posColor:null}]);
+    setPendingStart(null);setRoster10Team(null);setRoster10Queue([]);setRoster10Sel(new Set());
+    setScr("main");
+  };
+
+  const startNew=(hh,aa,newCfg)=>{
+    setCfg(newCfg);
+    const hR=teams.find(t=>t.id===hh),aR=teams.find(t=>t.id===aa);
+    if(!hR||!aR)return;
+    // Check if any team has >10 players
+    const needTrim=[];
+    if(hR.players.length>10)needTrim.push(hR);
+    if(aR.players.length>10)needTrim.push(aR);
+    if(needTrim.length===0){
+      finalizeStart(hh,aa,newCfg,{});
+    }else{
+      // Store pending and show roster10 picker
+      setPendingStart({hh,aa,cfg:newCfg,rosters:{}});
+      setRoster10Team(needTrim[0]);
+      setRoster10Queue(needTrim.slice(1));
+      setRoster10Sel(new Set(needTrim[0].players.slice(0,10).map(p=>p.id)));
+      setScr("roster10");
+    }
   };
 
   const resume=()=>{
@@ -834,10 +1052,10 @@ function App(){
     const shooter=pickS(aF,atk.players,aC.atk||"bilanciato",foMap);
     if(!shooter)return{type:"noop"};
     const fc2=(fatr[atk.id]||{})[shooter.id]||{contMin:0,benchMin:0};
-    const p2=ePct(shooter,isH,od,spd,fc2.contMin||0,2,cfgr);
-    const p3=ePct(shooter,isH,od,spd,fc2.contMin||0,3,cfgr);
+    const p2=ePct(shooter,isH,od,spd,fc2.contMin||0,2,cfgr,hTr.id);
+    const p3=ePct(shooter,isH,od,spd,fc2.contMin||0,3,cfgr,hTr.id);
     const ftPct=cF(shooter.tl||(isIn(shooter.ruolo)?65:75));
-    const secs={normale:15,veloce:10,lento:20}[spd]||15;
+    const secs={normale:20,veloce:15,lento:25}[spd]||20;
 
     // Defender foul selection: balanced with fc reduction at 3 fouls
     const getDefFouler=()=>{
@@ -870,11 +1088,11 @@ function App(){
       }
       if(atkChoice==="tiro3"){
         const best3=pickBest3Shooter(aF,atk.players,foMap)||shooter;
-        const made=Math.random()*100<ePct(best3,isH,od,spd,fc2.contMin||0,3,cfgr);
+        const made=Math.random()*100<ePct(best3,isH,od,spd,fc2.contMin||0,3,cfgr,hTr.id);
         const and1=made&&Math.random()<0.04;const ftM=and1?(Math.random()*100<ftPct):false;
         const assister=made&&!and1&&Math.random()<0.70?getAst():null;
         const offReb=!made&&Math.random()<0.15;const rebounder=!made?getReb(offReb?aF:dF,offReb?atk:def):null;
-        const rb2made=offReb&&rebounder?Math.random()*100<ePct(rebounder,isH,od,spd,0,2,cfgr):false;
+        const rb2made=offReb&&rebounder?Math.random()*100<ePct(rebounder,isH,od,spd,0,2,cfgr,hTr.id):false;
         const rb2rebounder=!rb2made&&rebounder?getReb(dF,def):null;
         return{type:"shot",s3:true,forced3:true,made,and1,ftM,assister,offReb,rebounder,rb2made,rb2rebounder,shooter:best3,def,atk,isH,secs,dFls:defFouls,defender:and1?getDefFouler():null};
       }
@@ -901,7 +1119,7 @@ function App(){
     const assister=made&&!and1&&Math.random()<0.70?getAst():null;
     const offReb=!made&&Math.random()<(0.15+Math.min(0.10,(shooter.rimO40||1)/20));
     const rebounder=!made?getReb(offReb?aF:dF,offReb?atk:def):null;
-    const rb2made=offReb&&rebounder?Math.random()*100<ePct(rebounder,isH,od,spd,0,2,cfgr):false;
+    const rb2made=offReb&&rebounder?Math.random()*100<ePct(rebounder,isH,od,spd,0,2,cfgr,hTr.id):false;
     const rb2rebounder=!rb2made&&rebounder?getReb(dF,def):null;
     return{type:"shot",s3,shot2Mode,isSchiacciata,made,and1,ftM,assister,offReb,rebounder,rb2made,rb2rebounder,shooter,def,atk,isH,secs,dFls:defFouls,defender:and1?getDefFouler():null};
   },[]);
@@ -916,6 +1134,10 @@ function App(){
       const newCount=(tfRef.current[team.id]||0)+1;
       tfRef.current={...tfRef.current,[team.id]:newCount};
       setTf(()=>({...tfRef.current}));
+      // track total fouls across quarters
+      const newTotal=(totalTfRef.current[team.id]||0)+1;
+      totalTfRef.current={...totalTfRef.current,[team.id]:newTotal};
+      setTotalTf(()=>({...totalTfRef.current}));
       return newCount;
     };
 
@@ -975,7 +1197,7 @@ function App(){
         else{setTimeout(()=>setScr("end"),800);setBusy(false);}
       }else if(q<4){
         const nq=q+1;const toPool=nq===3?3:null;
-        setTimeout(()=>{setQtr(nq);setTl(qDurSecs);possRef.current="home";setPoss("home");setBusy(false);setTf(t=>({...t,[hId]:0,[aId]:0}));tfRef.current={...tfRef.current,[hId]:0,[aId]:0};if(toPool!==null)setToL(t=>({...t,[hId]:toPool,[aId]:toPool}));if(nq===3){setFat(f=>{const n=JSON.parse(JSON.stringify(f));[hId,aId].forEach(tid=>{if(n[tid])Object.keys(n[tid]).forEach(pid=>{n[tid][pid]={contMin:0,benchMin:0};});});return n;});}addA("=== FINE Q"+q+" ===","#f5c518");},300);
+        setTimeout(()=>{setQtr(nq);setTl(qDurSecs);possRef.current="home";setPoss("home");setBusy(false);if(nq===3||nq===4){setTf(t=>({...t,[hId]:0,[aId]:0}));tfRef.current={...tfRef.current,[hId]:0,[aId]:0};}if(toPool!==null)setToL(t=>({...t,[hId]:toPool,[aId]:toPool}));if(nq===3){setFat(f=>{const n=JSON.parse(JSON.stringify(f));[hId,aId].forEach(tid=>{if(n[tid])Object.keys(n[tid]).forEach(pid=>{n[tid][pid]={contMin:0,benchMin:0};});});return n;});}addA("=== FINE Q"+q+" ===","#f5c518");},300);
       }else{
         const sc=scoreRef.current;
         if(sc.home===sc.away){const pb_h=isBonus(hId);const pb_a=isBonus(aId);setTimeout(()=>startOT(1,pb_h,pb_a),400);}
@@ -998,7 +1220,6 @@ function App(){
     if(action.type==="atk_foul"){
       const newAtkFouls=addTeamFoul(atk);
       doFoulSt(shooter,atk);
-      updMs(n=>{if(n[atk.id]?.[shooter.id])n[atk.id][shooter.id].fc++;});
       addA("Fallo in ATTACCO di "+shooter.name+" — "+newAtkFouls+"° fallo di squadra "+atk.name,col);
       const np=isH?"away":"home";possRef.current=np;setPoss(np);
       finishAction(false,false,false);
@@ -1021,7 +1242,8 @@ function App(){
       const{onShooter,bonus:bon,m1,m2,defender,dFls,keepPossOverride,intentional}=action;
       const newTfCount=addTeamFoul(def);
       doFoulSt(defender,def);
-      const teamFoulLabel=" — "+newTfCount+"° fallo di squadra "+def.name+(newTfCount>=5?" [BONUS]":"");
+      const totalTfDef=(totalTfRef.current[def.id]||0);
+      const teamFoulLabel=" — "+newTfCount+"° fallo Q (tot:"+totalTfDef+") "+def.name+(newTfCount>=5?" [BONUS]":"");
       const intentLabel=intentional?" [FALLO INTENZ.]":"";
       const bonLabel=bon?" [BONUS]":"";
 
@@ -1062,8 +1284,8 @@ function App(){
           addL(synMiss(),true,"red");
           updMs(n=>{if(n[atk.id]?.[shooter.id]){if(s3)n[atk.id][shooter.id].p3a++;else n[atk.id][shooter.id].p2a++;n[atk.id][shooter.id].played=true;}});
           if(offReb&&rebounder){
-            addL("Rimbalzo OFFENSIVO "+rebounder.name);updMs(n=>{if(n[atk.id]?.[rebounder.id])n[atk.id][rebounder.id].rim++;});
-            if(rb2made){addL(rebounder.name+" 2o tentativo: "+synMake2(),false,"green");playSound("make2");addPts(2);updMs(n=>{if(n[atk.id]?.[rebounder.id]){n[atk.id][rebounder.id].pts+=2;n[atk.id][rebounder.id].p2m++;n[atk.id][rebounder.id].p2a++;}});finishAction(true,false,false);}
+            addL("Rimbalzo OFFENSIVO "+rebounder.name,false,null);updMs(n=>{if(n[atk.id]?.[rebounder.id])n[atk.id][rebounder.id].rim++;});
+            if(rb2made){addA(rebounder.name+" rimbalzo off. + canestro: "+synMake2(),col,"green");playSound("make2");addPts(2);updMs(n=>{if(n[atk.id]?.[rebounder.id]){n[atk.id][rebounder.id].pts+=2;n[atk.id][rebounder.id].p2m++;n[atk.id][rebounder.id].p2a++;}});finishAction(true,false,false);}
             else{addL(rebounder.name+" 2o tentativo: "+synMiss(),false,"red");updMs(n=>{if(n[atk.id]?.[rebounder.id])n[atk.id][rebounder.id].p2a++;});
               if(rb2rebounder){addL("Rimbalzo difensivo "+rb2rebounder.name);updMs(n=>{if(n[def.id]?.[rb2rebounder.id])n[def.id][rb2rebounder.id].rim++;});const np2=isH?"away":"home";possRef.current=np2;setPoss(np2);}
               finishAction(false,false,false);}
@@ -1102,7 +1324,71 @@ function App(){
   },[waitingManual,manualChoice.atk,manualChoice.def,busy,foA]);
 
   // ROUTING
-  if(scr==="sel")return h(SetupSelectScreen,{onStart:startNew,hasSaved:!!(sv?.hId&&sv?.aId),onResume:resume});
+  if(appView==="landing")return h(LandingScreen,{onPlay:()=>setAppView("game"),onManage:()=>setAppView("manage")});
+  if(appView==="manage")return h(ManagementScreen,{teams,setTeams,onBack:()=>setAppView("landing")});
+  // ROSTER 10 SELECTION
+  if(scr==="roster10"&&roster10Team){
+    const team=roster10Team;
+    const togR10=(pid)=>{
+      setRoster10Sel(prev=>{
+        const n=new Set(prev);
+        if(n.has(pid)){n.delete(pid);}else if(n.size<10){n.add(pid);}
+        return n;
+      });
+    };
+    const confirmR10=()=>{
+      if(roster10Sel.size!==10)return;
+      // Build trimmed team with selected players in chosen order
+      const ordered=team.players.filter(p=>roster10Sel.has(p.id));
+      const trimmed={...team,players:ordered};
+      const newRosters={...pendingStart.rosters,[team.id]:trimmed};
+      if(roster10Queue.length>0){
+        // More teams to trim
+        const next=roster10Queue[0];
+        setPendingStart(p=>({...p,rosters:newRosters}));
+        setRoster10Team(next);
+        setRoster10Queue(roster10Queue.slice(1));
+        setRoster10Sel(new Set(next.players.slice(0,10).map(p=>p.id)));
+      }else{
+        finalizeStart(pendingStart.hh,pendingStart.aa,pendingStart.cfg,newRosters);
+      }
+    };
+    const ok=roster10Sel.size===10;
+    return h('div',{style:{width:'100%',height:'100%',background:'#07070f',display:'flex',flexDirection:'column',fontFamily:FD,color:'#fff',overflow:'hidden'}},
+      h('div',{style:{background:team.color,padding:'10px 14px',flexShrink:0}},
+        h('div',{style:{fontFamily:FB,fontSize:16,letterSpacing:2,color:'#fff'}},team.name),
+        h('div',{style:{fontSize:10,color:'rgba(255,255,255,.75)',marginTop:2}},
+          'Seleziona esattamente 10 giocatori per questa partita ('+roster10Sel.size+'/10)')),
+      h('div',{style:{flex:1,overflowY:'auto',padding:'8px 10px'}},
+        team.players.map((p,i)=>{
+          const on=roster10Sel.has(p.id);
+          const disabled=!on&&roster10Sel.size>=10;
+          return h('div',{key:p.id,onClick:()=>!disabled&&togR10(p.id),
+            style:{display:'flex',alignItems:'center',gap:10,padding:'8px 10px',
+              borderRadius:8,marginBottom:4,cursor:disabled?'not-allowed':'pointer',
+              background:on?team.color+'22':'#12121a',
+              border:'1px solid '+(on?team.color:'#2a2a3a'),
+              opacity:disabled?0.4:1}},
+            h('div',{style:{width:22,height:22,borderRadius:5,
+              background:on?team.color:'transparent',
+              border:'2px solid '+(on?team.color:'#444'),
+              display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0}},
+              on&&h('span',{style:{color:'#fff',fontSize:12,fontWeight:700}},'✓')),
+            h('div',{style:{flex:1}},
+              h('div',{style:{fontSize:11,fontWeight:700,color:on?'#fff':'#bbb'}},p.name),
+              h('div',{style:{fontSize:9,color:'#666'}},p.ruolo+' — OVR '+p.ovr)),
+            h('div',{style:{fontSize:9,color:'#666',textAlign:'right'}},
+              p.p2+'% '+p.p3+'% '+Math.round(p.rimT40||0)+'r'));
+        })),
+      h('div',{style:{padding:'10px',flexShrink:0,borderTop:'1px solid #1a1a28'}},
+        h(Btn,{onClick:confirmR10,disabled:!ok,
+          style:{width:'100%',background:ok?team.color:'#1a1a28',color:'#fff',
+            border:'none',borderRadius:10,padding:13,fontSize:14,fontFamily:FB,
+            letterSpacing:2,opacity:ok?1:0.5}},
+          ok?'CONFERMA ROSA':'Seleziona '+(10-roster10Sel.size)+' giocatori')));
+  }
+
+  if(scr==="sel")return h(SetupSelectScreen,{teams,onStart:startNew,hasSaved:!!(sv?.hId&&sv?.aId),onResume:resume});
   if(!hT||!aT)return h(SetupSelectScreen,{onStart:startNew,hasSaved:false,onResume:()=>{}});
   if(scr==="rH")return h(RosterScreen,{team:hT,selected:[...(of[hId]||new Set())],onConfirm:ids=>{setOf(p=>({...p,[hId]:new Set(ids)}));setFoA(null);setBusy(false);setPlay(false);setScr("main");},onBack:()=>setScr("main"),ms});
   if(scr==="rA")return h(RosterScreen,{team:aT,selected:[...(of[aId]||new Set())],onConfirm:ids=>{setOf(p=>({...p,[aId]:new Set(ids)}));setFoA(null);setBusy(false);setPlay(false);setScr("main");},onBack:()=>setScr("main"),ms});
@@ -1141,7 +1427,7 @@ function App(){
       h('div',{style:{width:14,height:14,borderRadius:3,background:roleColor,display:"flex",alignItems:"center",justifyContent:"center",fontSize:6,fontWeight:700,color:roleTxt,flexShrink:0,fontFamily:FB}},rg(p.ruolo)),
       h('div',{style:{flex:1,minWidth:0,fontSize:8,fontWeight:700,color:nameColor,whiteSpace:"nowrap",overflow:"hidden",textOverflow:"ellipsis"}},p.name),
       tColor&&h('span',{style:{fontSize:6,color:tColor,fontFamily:FB,marginRight:1}},bench&&fc3.benchMin<3?"STN":tColor==="#44bb44"?"OK":"STN"),
-      [{v:s.pts,c:"#f5c518"},{v:s.rim,c:"#aaa"},{v:s.ast,c:"#7af"},{v:s.fc,c:s.fc>=4?"#f88":"#888"}].map(({v,c},i)=>h('div',{key:i,style:{minWidth:12,textAlign:"center",fontSize:9,fontWeight:700,color:c,fontFamily:FB}},v)));
+      [{v:s.pts,c:"#f5c518"},{v:s.rim,c:"#aaa"},{v:s.ast,c:"#7af"},{v:s.fc,c:s.fc>=4?"#f88":"#888"}].map(({v,c},i)=>h('div',{key:i,style:{width:14,textAlign:"center",fontSize:9,fontWeight:700,color:c,fontFamily:FB,flexShrink:0}},v)));
   };
 
   const SP=({team,starters,bench,side})=>{
@@ -1149,13 +1435,14 @@ function App(){
     return h('div',{style:{background:"#0d0d15",borderRight:side==="L"?"1px solid #1a1a28":"none",borderLeft:side==="R"?"1px solid #1a1a28":"none",display:"flex",flexDirection:"column",overflow:"hidden"}},
       h('div',{style:{padding:"2px 5px 1px",borderBottom:"1px solid #1a1a28",flexShrink:0,display:"flex",justifyContent:"space-between",alignItems:"center"}},
         h('span',{style:{fontSize:6,color:team.color,fontWeight:700,fontFamily:FB}},"IN CAMPO"),
-        h('div',{style:{display:"flex"}},[{lbl:"PTS",c:"#f5c518"},{lbl:"RIM",c:"#aaa"},{lbl:"AST",c:"#7af"},{lbl:"FC",c:"#888"}].map(({lbl,c})=>h('div',{key:lbl,style:{minWidth:12,textAlign:"center",fontSize:5,color:c}},lbl)))),
+        h('div',{style:{display:"flex"}},[{lbl:"PTS",c:"#f5c518"},{lbl:"RIM",c:"#aaa"},{lbl:"AST",c:"#7af"},{lbl:"FC",c:"#888"}].map(({lbl,c})=>h('div',{key:lbl,style:{width:14,textAlign:"center",fontSize:5,color:c,flexShrink:0}},lbl)))),
       h('div',{style:{padding:"2px 4px",flexShrink:0}},sortedStarters.map(p=>h(PRow,{key:p.id,p,team,bench:false}))),
       h('div',{style:{height:1,background:"#2a2a3a",margin:"2px 4px",flexShrink:0}}),
       h('div',{style:{padding:"1px 4px 0",flexShrink:0}},
         h('div',{style:{fontSize:5,color:"#444",fontFamily:FB,letterSpacing:1,marginBottom:1}},"PANCHINA"),
         bench.map(p=>h(PRow,{key:p.id,p,team,bench:true}))),
-      h('div',{style:{flex:1}}));
+      h('div',{style:{flex:1}}),
+      h('div',{style:{padding:"0 4px 3px",flexShrink:0}},h(Btn,{onClick:()=>{setPlay(false);setScr(side==="L"?"rH":"rA");},style:{width:"100%",background:team.color+"18",color:team.color,border:"1px solid "+team.color+"44",borderRadius:5,padding:3,fontSize:6,fontFamily:FB,letterSpacing:1}},"CAMBIA")));
   };
 
   return h('div',{style:{width:"100vw",height:"100vh",background:"#0a0a0f",display:"flex",flexDirection:"column",fontFamily:FD,color:"#fff",overflow:"hidden"}},
@@ -1185,7 +1472,7 @@ function App(){
       h('div',{style:{display:"flex",alignItems:"center",gap:4}},
         h(Ball,{color:hT.color,sz:13}),
         h('div',null,
-          h('div',{style:{fontFamily:FB,fontSize:10,letterSpacing:1,color:hT.color,lineHeight:1}},hT.name),
+          h('div',{style:{fontFamily:FB,fontSize:10,letterSpacing:1,color:hT.color,lineHeight:1,maxWidth:90,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}},hT.name),
           h(FoulDisplay,{fouls:hFls,bonus:hBonus}),
           h('div',{style:{fontSize:6,color:"#444"}},hc.difesa==="zona"&&"D:Z ",hc.speed&&hc.speed!=="normale"&&"V:"+hc.speed[0].toUpperCase()+" ",hc.atk&&hc.atk!=="bilanciato"&&"A:"+(hc.atk==="palla_sotto"?"PS":"Per")))),
       h('div',{style:{textAlign:"center"}},
@@ -1200,7 +1487,7 @@ function App(){
           h('span',{style:{fontFamily:FB,fontSize:10,letterSpacing:2,color:isOT?"#f5c518":"#e8c840"}},fmt(tl)),
           h('span',{style:{fontSize:7,color:isOT?"#f5c518":"#555",background:isOT?"#2a1a00":"#1e1e2e",borderRadius:3,padding:"0 3px",fontWeight:isOT?700:400}},qLabel),
           !waitingManual&&h(Btn,{onClick:()=>{
-            if(canAdvance){const nq=qtr+1;setQtr(nq);setTl(qDurSecs);possRef.current="home";setPoss("home");setTf(t=>({...t,[hId]:0,[aId]:0}));tfRef.current={...tfRef.current,[hId]:0,[aId]:0};if(nq===3)setToL(t=>({...t,[hId]:3,[aId]:3}));setLast3Active(false);setPlay(true);}
+            if(canAdvance){const nq=qtr+1;setQtr(nq);setTl(qDurSecs);possRef.current="home";setPoss("home");if(nq===3||nq===4){setTf(t=>({...t,[hId]:0,[aId]:0}));tfRef.current={...tfRef.current,[hId]:0,[aId]:0};}if(nq===3)setToL(t=>({...t,[hId]:3,[aId]:3}));setLast3Active(false);setPlay(true);}
             else if(!tipDone){
               const hOf2=[...(of[hId]||new Set())];const aOf2=[...(of[aId]||new Set())];
               const hJ=pickJumper(hOf2,hT.players);const aJ=pickJumper(aOf2,aT.players);
@@ -1213,7 +1500,7 @@ function App(){
           canAdvance?"Q"+(qtr+1):play?"PAUSA":"GIOCA"))),
       h('div',{style:{display:"flex",alignItems:"center",gap:4,justifyContent:"flex-end"}},
         h('div',{style:{textAlign:"right"}},
-          h('div',{style:{fontFamily:FB,fontSize:10,letterSpacing:1,color:aT.color,lineHeight:1}},aT.name),
+          h('div',{style:{fontFamily:FB,fontSize:10,letterSpacing:1,color:aT.color,lineHeight:1,maxWidth:90,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap",textAlign:"right"}},aT.name),
           h('div',{style:{display:"flex",justifyContent:"flex-end"}},h(FoulDisplay,{fouls:aFls,bonus:aBonus})),
           h('div',{style:{fontSize:6,color:"#444",textAlign:"right"}},ac.difesa==="zona"&&"D:Z ",ac.speed&&ac.speed!=="normale"&&"V:"+ac.speed[0].toUpperCase()+" ",ac.atk&&ac.atk!=="bilanciato"&&"A:"+(ac.atk==="palla_sotto"?"PS":"Per"))),
         h(Ball,{color:aT.color,sz:13}))),
@@ -1273,61 +1560,53 @@ function App(){
                   h(Btn,{onClick:()=>setManualChoice(c=>({...c,def:"play"})),style:{flex:1,background:manualChoice.def==="play"?aT.color:"#1a1a28",color:"#fff",border:"1px solid "+(manualChoice.def==="play"?aT.color:"#2a2a3a"),borderRadius:6,padding:"5px 4px",fontSize:9,fontFamily:FB}},"GIOCA"),
                   h(Btn,{onClick:()=>setManualChoice(c=>({...c,def:"fallo"})),style:{flex:1,background:manualChoice.def==="fallo"?"#f44":"#1a1a28",color:"#fff",border:"1px solid "+(manualChoice.def==="fallo"?"#f44":"#2a2a3a"),borderRadius:6,padding:"5px 4px",fontSize:9,fontFamily:FB}},"FALLO INT.")))))),
 
-    // ACTION BAR
-    h('div',{
-      style:{
-        background:"#0c0c18",
-        borderTop:"2px solid #1a1a28",
-        flexShrink:0,
-        padding:"6px 8px",
-        paddingBottom:"max(8px,env(safe-area-inset-bottom))"
-      }},
+        // ACTION BAR
+    h('div',{style:{background:"#0c0c18",borderTop:"2px solid #1a1a28",flexShrink:0,
+      padding:"6px 8px",paddingBottom:"max(8px,env(safe-area-inset-bottom))"}},
       h('div',{style:{display:"grid",gridTemplateColumns:"repeat(6,1fr)",gap:3}},
         h(Btn,{onClick:()=>{setPlay(false);setScr("rH");},
-          style:{background:hT.color+"22",color:hT.color,
-            border:"1px solid "+hT.color+"55",borderRadius:8,
-            padding:"6px 2px",display:"flex",flexDirection:"column",
-            alignItems:"center",gap:1,fontSize:7,fontFamily:FB}},
+          style:{background:hT.color+"22",color:hT.color,border:"1px solid "+hT.color+"55",
+            borderRadius:8,padding:"7px 2px",fontSize:7,fontFamily:FB,
+            display:"flex",flexDirection:"column",alignItems:"center",gap:1}},
           h('span',{style:{fontSize:11}},"\uD83D\uDD04"),
           h('span',null,"CAMBIA"),
           h('span',{style:{fontSize:6,opacity:.7}},hT.name.split(" ")[0])),
         h(Btn,{onClick:()=>{setPlay(false);setScr("to");},disabled:hTO<=0,
           style:{background:hTO>0?"#0d1a2e":"#111",color:hTO>0?"#7af":"#444",
-            border:"1px solid "+(hTO>0?"#2a4a7a":"#1a1a28"),borderRadius:8,
-            padding:"6px 2px",display:"flex",flexDirection:"column",
-            alignItems:"center",gap:1,fontSize:7,fontFamily:FB,opacity:hTO>0?1:0.4}},
+            border:"1px solid "+(hTO>0?"#2a4a7a":"#1a1a28"),
+            borderRadius:8,padding:"7px 2px",fontSize:7,fontFamily:FB,
+            display:"flex",flexDirection:"column",alignItems:"center",gap:1,opacity:hTO>0?1:0.4}},
           h('span',{style:{fontSize:11}},"\u23F1"),
           h('span',null,"T.OUT"),
           h('span',{style:{fontSize:6,opacity:.7}},hT.name.split(" ")[0]+" ("+hTO+")")),
         h(Btn,{onClick:()=>{setPlay(false);setScr("mst");},
           style:{background:"#111",color:"#ccc",border:"1px solid #2a2a3a",
-            borderRadius:8,padding:"6px 2px",display:"flex",flexDirection:"column",
-            alignItems:"center",gap:1,fontSize:7,fontFamily:FB}},
+            borderRadius:8,padding:"7px 2px",fontSize:7,fontFamily:FB,
+            display:"flex",flexDirection:"column",alignItems:"center",gap:1}},
           h('span',{style:{fontSize:11}},"\uD83D\uDCCA"),
           h('span',null,"STATS")),
         h(Btn,{onClick:()=>{setPlay(false);setScr("cch");},
           style:{background:"#111",color:"#ccc",border:"1px solid #2a2a3a",
-            borderRadius:8,padding:"6px 2px",display:"flex",flexDirection:"column",
-            alignItems:"center",gap:1,fontSize:7,fontFamily:FB}},
+            borderRadius:8,padding:"7px 2px",fontSize:7,fontFamily:FB,
+            display:"flex",flexDirection:"column",alignItems:"center",gap:1}},
           h('span',{style:{fontSize:11}},"\uD83C\uDFAF"),
           h('span',null,"TATTICA")),
         h(Btn,{onClick:()=>{setPlay(false);setScr("to");},disabled:aTO<=0,
           style:{background:aTO>0?"#0d1a2e":"#111",color:aTO>0?"#7af":"#444",
-            border:"1px solid "+(aTO>0?"#2a4a7a":"#1a1a28"),borderRadius:8,
-            padding:"6px 2px",display:"flex",flexDirection:"column",
-            alignItems:"center",gap:1,fontSize:7,fontFamily:FB,opacity:aTO>0?1:0.4}},
+            border:"1px solid "+(aTO>0?"#2a4a7a":"#1a1a28"),
+            borderRadius:8,padding:"7px 2px",fontSize:7,fontFamily:FB,
+            display:"flex",flexDirection:"column",alignItems:"center",gap:1,opacity:aTO>0?1:0.4}},
           h('span',{style:{fontSize:11}},"\u23F1"),
           h('span',null,"T.OUT"),
           h('span',{style:{fontSize:6,opacity:.7}},aT.name.split(" ")[0]+" ("+aTO+")")),
         h(Btn,{onClick:()=>{setPlay(false);setScr("rA");},
-          style:{background:aT.color+"22",color:aT.color,
-            border:"1px solid "+aT.color+"55",borderRadius:8,
-            padding:"6px 2px",display:"flex",flexDirection:"column",
-            alignItems:"center",gap:1,fontSize:7,fontFamily:FB}},
+          style:{background:aT.color+"22",color:aT.color,border:"1px solid "+aT.color+"55",
+            borderRadius:8,padding:"7px 2px",fontSize:7,fontFamily:FB,
+            display:"flex",flexDirection:"column",alignItems:"center",gap:1}},
           h('span',{style:{fontSize:11}},"\uD83D\uDD04"),
           h('span',null,"CAMBIA"),
-          h('span',{style:{fontSize:6,opacity:.7}},aT.name.split(" ")[0])))
-  )));
+          h('span',{style:{fontSize:6,opacity:.7}},aT.name.split(" ")[0])))))
+  );
 }
 ReactDOM.createRoot(document.getElementById('root')).render(h(App));
 </script>
