@@ -334,8 +334,8 @@ const rg=r=>{const s=(r||"").toLowerCase();if(s.includes("play"))return"P";if(s.
 const isIn=r=>{const g=rg(r);return g==="AP"||g==="C";};
 const roleOrder=r=>{const g=rg(r);return g==="P"?0:g==="G"?1:g==="A"?2:g==="AP"?3:4;};
 const SK="bapp_v17";
-const lSv=()=>{try{return JSON.parse(localStorage.getItem(SK)||"null");}catch{return null;}};
-const wSv=s=>{try{localStorage.setItem(SK,JSON.stringify(s));}catch{}};
+const lSv=()=>{try{return JSON.parse(localStorage.getItem(SK)||"null");}catch(e){return null;}};
+const wSv=s=>{try{localStorage.setItem(SK,JSON.stringify(s));}catch(e){}};
 const FB="'Bebas Neue',sans-serif";
 const FD="'DM Sans',sans-serif";
 
@@ -541,7 +541,7 @@ function ManagementScreen({teams,setTeams,onBack}){
       return {...t,players:(t.players||[]).map(p=>p&&p.id===selPlayerId?updated:p)};
     });
     setTeams(newTeams);
-    try{localStorage.setItem("bapp_custom_teams",JSON.stringify(newTeams));}catch{}
+    try{localStorage.setItem("bapp_custom_teams",JSON.stringify(newTeams));}catch(e){}
     showMsg("Salvato!");
     setView("menu");
   };
@@ -567,7 +567,7 @@ function ManagementScreen({teams,setTeams,onBack}){
       return {...t,players:[...(t.players||[]),newP]};
     });
     setTeams(newTeams);
-    try{localStorage.setItem("bapp_custom_teams",JSON.stringify(newTeams));}catch{}
+    try{localStorage.setItem("bapp_custom_teams",JSON.stringify(newTeams));}catch(e){}
     showMsg("Giocatore aggiunto!");
     setNewPlayerData({});setSelTeamId(null);setView("menu");
   };
@@ -586,7 +586,7 @@ function ManagementScreen({teams,setTeams,onBack}){
       return t;
     });
     setTeams(newTeams);
-    try{localStorage.setItem("bapp_custom_teams",JSON.stringify(newTeams));}catch{}
+    try{localStorage.setItem("bapp_custom_teams",JSON.stringify(newTeams));}catch(e){}
     showMsg(player.name+" trasferito!");
     setFromTeamId(null);setToTeamId(null);setTransferPid(null);setView("menu");
   };
@@ -907,7 +907,7 @@ function App(){
     if(saved){const parsed=JSON.parse(saved);
     // Merge: replace matching teams, keep T0 for others
     return T0.map(t=>{const found=parsed.find(s=>s&&s.id===t.id);return found||t;}).filter(t=>t&&t.id);
-    }}catch{} return T0;
+    }}catch(e){} return T0;
   });
   const [appView,setAppView]=useState('landing');
   const [pendingStart,setPendingStart]=useState(null);
