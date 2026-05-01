@@ -327,6 +327,7 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
 
 </script>
 <script>
+const{useState,useCallback,useEffect,useRef}=React;
 // UTILS
 const c2=v=>Math.max(35,Math.min(65,v));
 const c3=v=>Math.max(15,Math.min(45,v));
@@ -1471,13 +1472,54 @@ function App(){
                   h(Btn,{onClick:()=>setManualChoice(c=>({...c,def:"play"})),style:{flex:1,background:manualChoice.def==="play"?aT.color:"#1a1a28",color:"#fff",border:"1px solid "+(manualChoice.def==="play"?aT.color:"#2a2a3a"),borderRadius:6,padding:"5px 4px",fontSize:9,fontFamily:FB}},"GIOCA"),
                   h(Btn,{onClick:()=>setManualChoice(c=>({...c,def:"fallo"})),style:{flex:1,background:manualChoice.def==="fallo"?"#f44":"#1a1a28",color:"#fff",border:"1px solid "+(manualChoice.def==="fallo"?"#f44":"#2a2a3a"),borderRadius:6,padding:"5px 4px",fontSize:9,fontFamily:FB}},"FALLO INT.")))))),
 
-    // NAV
-    h('div',{style:{display:"flex",borderTop:"1px solid #1e1e2e",flexShrink:0,background:"#0a0a12"}},
-      [["mst","MATCH STAT"],["cch","TATTICA"],["to","TIME OUT"]].map(([id,lbl])=>h(Btn,{key:id,onClick:()=>{setPlay(false);setScr(id);},style:{background:"#0a0a12",color:"#777",border:"none",borderRadius:0,padding:"8px 4px 6px",fontSize:8,fontFamily:FB,letterSpacing:1,width:"33%"}},lbl)))));
+        // ACTION BAR
+    h('div',{style:{background:"#0c0c18",borderTop:"2px solid #1a1a28",flexShrink:0,
+      padding:"6px 8px",paddingBottom:"max(8px,env(safe-area-inset-bottom))"}},
+      h('div',{style:{display:"grid",gridTemplateColumns:"repeat(6,1fr)",gap:3}},
+        h(Btn,{onClick:()=>{setPlay(false);setScr("rH");},
+          style:{background:hT.color+"22",color:hT.color,border:"1px solid "+hT.color+"55",
+            borderRadius:8,padding:"7px 2px",fontSize:7,fontFamily:FB,
+            display:"flex",flexDirection:"column",alignItems:"center",gap:1}},
+          h('span',{style:{fontSize:11}},"\uD83D\uDD04"),
+          h('span',null,"CAMBIA"),
+          h('span',{style:{fontSize:6,opacity:.7}},hT.name.split(" ")[0])),
+        h(Btn,{onClick:()=>{setPlay(false);setScr("to");},disabled:hTO<=0,
+          style:{background:hTO>0?"#0d1a2e":"#111",color:hTO>0?"#7af":"#444",
+            border:"1px solid "+(hTO>0?"#2a4a7a":"#1a1a28"),
+            borderRadius:8,padding:"7px 2px",fontSize:7,fontFamily:FB,
+            display:"flex",flexDirection:"column",alignItems:"center",gap:1,opacity:hTO>0?1:0.4}},
+          h('span',{style:{fontSize:11}},"\u23F1"),
+          h('span',null,"T.OUT"),
+          h('span',{style:{fontSize:6,opacity:.7}},hT.name.split(" ")[0]+" ("+hTO+")")),
+        h(Btn,{onClick:()=>{setPlay(false);setScr("mst");},
+          style:{background:"#111",color:"#ccc",border:"1px solid #2a2a3a",
+            borderRadius:8,padding:"7px 2px",fontSize:7,fontFamily:FB,
+            display:"flex",flexDirection:"column",alignItems:"center",gap:1}},
+          h('span',{style:{fontSize:11}},"\uD83D\uDCCA"),
+          h('span',null,"STATS")),
+        h(Btn,{onClick:()=>{setPlay(false);setScr("cch");},
+          style:{background:"#111",color:"#ccc",border:"1px solid #2a2a3a",
+            borderRadius:8,padding:"7px 2px",fontSize:7,fontFamily:FB,
+            display:"flex",flexDirection:"column",alignItems:"center",gap:1}},
+          h('span',{style:{fontSize:11}},"\uD83C\uDFAF"),
+          h('span',null,"TATTICA")),
+        h(Btn,{onClick:()=>{setPlay(false);setScr("to");},disabled:aTO<=0,
+          style:{background:aTO>0?"#0d1a2e":"#111",color:aTO>0?"#7af":"#444",
+            border:"1px solid "+(aTO>0?"#2a4a7a":"#1a1a28"),
+            borderRadius:8,padding:"7px 2px",fontSize:7,fontFamily:FB,
+            display:"flex",flexDirection:"column",alignItems:"center",gap:1,opacity:aTO>0?1:0.4}},
+          h('span',{style:{fontSize:11}},"\u23F1"),
+          h('span',null,"T.OUT"),
+          h('span',{style:{fontSize:6,opacity:.7}},aT.name.split(" ")[0]+" ("+aTO+")")),
+        h(Btn,{onClick:()=>{setPlay(false);setScr("rA");},
+          style:{background:aT.color+"22",color:aT.color,border:"1px solid "+aT.color+"55",
+            borderRadius:8,padding:"7px 2px",fontSize:7,fontFamily:FB,
+            display:"flex",flexDirection:"column",alignItems:"center",gap:1}},
+          h('span',{style:{fontSize:11}},"\uD83D\uDD04"),
+          h('span',null,"CAMBIA"),
+          h('span',{style:{fontSize:6,opacity:.7}},aT.name.split(" ")[0])))))
+  );
 }
-
-ReactDOM.createRoot(document.getElementById('root')).render(h(App));
-
 ReactDOM.createRoot(document.getElementById('root')).render(h(App));
 </script>
 </body>
