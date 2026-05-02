@@ -405,7 +405,7 @@ const calcOVR=(p)=>{
 function calcTeamOVR(players){
   if(!players||!players.length)return 0;
   const top=[...players].slice(0,10);
-  function rawScore(p){
+  const rawScore=function(p){
     const p2=p.p2||50,p3=p.p3||30,tl=p.tl||70,rim=p.rimT40||3,ast=p.ast40||2;
     const shot=(p2-35)/30*0.5+(p3-15)/30*0.3+(tl-45)/50*0.1;
     const athl=Math.min(1,rim/10)*0.4+Math.min(1,ast/7)*0.3+Math.min(1,(rim+ast)/14)*0.3;
